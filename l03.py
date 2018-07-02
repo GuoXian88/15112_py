@@ -2,6 +2,7 @@
 
 
 import math
+import numbers
 
 def f():
     print("This is a user-defined function")
@@ -84,7 +85,85 @@ print(" 6%3 = ", (6%3))
 print(" 5%3 = ", (5%3))
 print(" 2%3 = ", (2%3))
 print(" 0%3 = ", (0%3))
-print(" -4%3 = ", (-4%3))
+print(" -4%3 = ", (-4%3)) # 2
+# print(" 3%0 = ", (3%0)) #error
+
+
+#Verify that (a%b) is equivalent to (a - (a//b)*b)
+def mod(a, b):
+    return a - (a//b)*b
+print(41%14, mod(41,14))
+print(14%41, mod(14,41))
+print(-32%9, mod(-32,9))
+print(32%-9, mod(32,-9))
+
+#优先级
+
+print("Precedence：")
+
+print(2+3*4)
+print(5+4%3)
+print(2**3*4)
+print()
+
+print("Associativity:")
+print(5-4-3)
+print(4**3**2) #right to left
+
+
+#float number
+print(0.1 + 0.1 == 0.2)        # True, but...
+print(0.1 + 0.1 + 0.1 == 0.3)  # False!
+print(0.1 + 0.1 + 0.1)         # prints 0.30000000000000004 (uh oh)
+print((0.1 + 0.1 + 0.1) - 0.3) # prints 5.55111512313e-17 (tiny, but non-zero!)
+
+
+#Short-Circuit Evaluation 'and or'
+
+
+def isPositive(n):
+    result = (n>0)
+    print("isPositive(", n, ") = ", result)
+    return result
+
+def isEven(n):
+    result = ( n % 2 == 0)
+    print("isEven(",n,") =",result)
+    return result
+
+
+print("Test 1: isEven(-4) and isPositive(-4))")
+print(isEven(-4) and isPositive(-4)) # Calls both functions
+print("----------")
+print("Test 2: isEven(-3) and isPositive(-3)")
+print(isEven(-3) and isPositive(-3)) # Calls only one function!
+
+#type vs isinstance
+
+# In general, you should use (isinstance(x, T)) instead of (type(x) == T)
+
+print(type("abc") == str)
+print(isinstance("abc", str))
+
+
+# We'll see better reasons for this when we cover OOP + inheritance later
+# in the course.  For now, here is one reason:  say you wanted to check
+# if a value is any kind of number (int, float, complex, etc). 
+# You could do:
+
+def isNumber(x):
+    return (type(x) == int) or (type(x) == float)
+    
+print(isNumber(1), isNumber(1.1), isNumber(1+2j), isNumber("wow"))
+
+# god damn good isNumberFromLib
+# 有点像js的instanceof检查原型链?
+
+def isNumberFromLib(x):
+    return isinstance(x, numbers.Number) #works for any kind of number
+    
+print(isNumberFromLib(1), isNumberFromLib(1.1), isNumberFromLib(1+2j), isNumberFromLib("wow"))    
+
 
 
 
