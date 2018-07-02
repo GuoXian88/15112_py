@@ -193,7 +193,45 @@ print("This is nice.  Really nice.".replace("nice", "sweet"))
 print("This is nice.  Really nice.".replace("nice", "sweet", 1)) # count = 1
 
 
+breed = "beagle"
+print("Did you see a %s?" % breed)
+
+dogs = 42
+print("There are %d dogs." % dogs)
+
+grade = 87.385
+print("Your current grade is %0.1f!" % grade)
+
+dogs = 42
+cats = 18
+exclamation = "Wow"
+print("There are %d dogs and %d cats. %s!!!" % (dogs, cats, exclamation))
+
+dogs = 42
+cats = 3
+print("%10s %10s" % ("dogs", "cats"))
+print("%10d %10d" % (dogs, cats))
+
+dogs = 42
+cats = 3
+print("%-10s %-10s" % ("dogs", "cats"))
+print("%-10d %-10d" % (dogs, cats))
 
 
+def readFile(path):
+    with open(path, "rt") as f:
+        return f.read()
+        
+def writeFile(path, contents):
+    with open(path, "wt") as f:
+        f.write(contents)
+        
+contentsToWrite = "This is a test!\nIt is only a test!"
+writeFile("foo.txt", contentsToWrite)
+
+contentsRead = readFile("foo.txt")
+assert(contentsRead == contentsToWrite)
+
+print("Open the file foo.txt and verify its contents.")
 
 
