@@ -1,0 +1,14 @@
+.DS_Store
+.vscode/
+.idea/
+/*.log
+node_modules/
+/coverage/
+/lib/
+/dist/
+
+# Heroku (remove if you're using the no-service boilerplate)
+/.env
+
+venv/
+__pycache__/
