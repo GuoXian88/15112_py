@@ -91,3 +91,13 @@ def tag(name, *content, cls=None, **attrs):
     else:
         return '<%s%s />' % (name, attr_str)
 # END TAG_FUNC
+
+
+import bobo
+
+@bobo.query('/')
+def hello(person):
+    return 'Hello %s!' % person
+
+
+
